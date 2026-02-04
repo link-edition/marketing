@@ -4,169 +4,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marketing & Budjet Auditi | Pro</title>
-    <meta name="description"
-        content="Biznesingizning marketing holatini tahlil qiling va optimal reklama byudjetini aniqlang">
+    <title>Marketing & Byudjet Auditi</title>
+    <!-- Inter Font (Standard shadcn/ui font) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-    <div class="background-glow"></div>
 
-    <div class="container">
-        <!-- Welcome Screen -->
-        <section id="welcome-screen" class="screen active">
-            <div class="glass-card welcome-card">
-                <div class="logo-area">
-                    <i class="fa-solid fa-rocket logo-icon"></i>
-                    <h1>Marketing Audit</h1>
+    <!-- WELCOME SCREEN: Clean, centered, minimal -->
+    <section id="welcome-screen" class="screen active">
+        <div class="container wizard-mode">
+            <div class="wizard-card" style="text-align: center;">
+                <div class="welcome-icon">
+                    <i class="fa-solid fa-chart-simple"></i>
                 </div>
-                <p class="subtitle">Biznesingizning hozirgi holati va potensialini professional darajada tahlil qiling
+                <h1>Marketing & Byudjet Auditi</h1>
+                <p class="subtitle">Biznesingizning hozirgi holati va potensialini professional darajada tahlil qiling.
                 </p>
-                <div class="features-list">
-                    <div class="feature-item">
-                        <i class="fa-solid fa-magnifying-glass-chart"></i>
-                        <span>Chuqur Tahlil</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fa-solid fa-coins"></i>
-                        <span>Byudjet Hisobi</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fa-solid fa-chart-pie"></i>
-                        <span>Pro Natijalar</span>
-                    </div>
-                </div>
-                <button id="start-btn" class="btn btn-primary pulse">
-                    <i class="fa-solid fa-play"></i>
-                    Bepul Auditni Boshlash
+
+                <button id="start-btn" class="btn btn-primary" style="width: 100%;">
+                    Boshlash <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Wizard Screen -->
-        <section id="wizard-screen" class="screen">
-            <div class="glass-card wizard-card">
-                <div class="wizard-header">
-                    <div class="progress-bar-container">
-                        <div class="progress-bar" id="progress-bar"></div>
-                    </div>
-                    <h2 id="question-title">Savol 1/9</h2>
+    <!-- WIZARD SCREEN: Clean layout for questions -->
+    <section id="wizard-screen" class="screen">
+        <div class="container wizard-mode">
+            <div class="wizard-card">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-bar"></div>
                 </div>
 
-                <div id="question-container" class="question-container">
-                    <!-- Questions will be injected here via JS -->
+                <h2 id="question-title" style="text-align: center; justify-content: center; margin-bottom: 2rem;">Savol
+                    1/9</h2>
+
+                <div id="question-container"
+                    style="min-height: 200px; display: flex; flex-direction: column; justify-content: center;">
+                    <!-- JS injects content here -->
                 </div>
 
-                <div class="wizard-controls">
-                    <button id="prev-btn" class="btn btn-secondary hidden">
-                        <i class="fa-solid fa-arrow-left"></i> Ortga
-                    </button>
-                    <button id="next-btn" class="btn btn-primary">
-                        Keyingisi <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Results Screen -->
-        <section id="results-screen" class="screen">
-            <div class="glass-card results-card">
-                <h2>🎉 Marketing Audit Natijalari</h2>
-
-                <div class="status-grid">
-                    <div class="status-item">
-                        <h3>Biznes Holati</h3>
-                        <div class="status-indicator">
-                            <span class="icon-box warning"><i class="fa-solid fa-triangle-exclamation"></i></span>
-                            <div class="status-text">
-                                <span class="label">Xavf darajasi</span>
-                                <span class="value" id="risk-level">🔴 Yuqori</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="status-item">
-                        <h3>Moliyaviy Maqsad</h3>
-                        <div class="status-indicator">
-                            <span class="icon-box success"><i class="fa-solid fa-sack-dollar"></i></span>
-                            <div class="status-text">
-                                <span class="label">Oylik daromad</span>
-                                <span class="value" id="goal-amount">$10,000</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="funnel-breakdown">
-                    <h3>📊 Funnel Hisob-kitobi</h3>
-                    <div class="funnel-steps">
-                        <div class="funnel-step">
-                            <span class="step-count" id="needed-leads">0</span>
-                            <span class="step-label">Kerakli Lidlar</span>
-                        </div>
-                        <div class="funnel-connector">➜</div>
-                        <div class="funnel-step">
-                            <span class="step-count" id="needed-clients">0</span>
-                            <span class="step-label">Kerakli Mijozlar</span>
-                        </div>
-                        <div class="funnel-connector">➜</div>
-                        <div class="funnel-step">
-                            <span class="step-count highlight" id="revenue-goal">$0</span>
-                            <span class="step-label">Daromad</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="budget-recommendation">
-                    <h3>💰 Tavsiya Etilgan Byudjet</h3>
-                    <div class="budget-box">
-                        <div class="budget-row">
-                            <span>Minimal byudjet:</span>
-                            <span class="budget-value" id="min-budget">$0</span>
-                        </div>
-                        <div class="budget-row">
-                            <span>Optimal byudjet:</span>
-                            <span class="budget-value" id="opt-budget">$0</span>
-                        </div>
-                    </div>
-                    <div class="penalties-box" id="penalties-box" style="display: none;">
-                        <h4><i class="fa-solid fa-exclamation-circle"></i> Muhim Ogohlantirishlar</h4>
-                        <ul id="penalties-list"></ul>
-                    </div>
-                </div>
-
-                <!-- TAVSIYALAR BO'LIMI -->
-                <div class="recommendations-section">
-                    <h3>🎯 Shaxsiy Tavsiyalar</h3>
-                    <div id="recommendations-list" class="recommendations-list">
-                        <!-- Recommendations will be injected here -->
-                    </div>
-                </div>
-
-                <div class="action-area">
-                    <button id="save-btn" class="btn btn-primary">
-                        <i class="fa-solid fa-cloud-arrow-up"></i>
-                        Auditni Saqlash
-                    </button>
-                    <button id="restart-btn" class="btn btn-secondary">
-                        <i class="fa-solid fa-rotate"></i>
-                        Qayta Hisoblash
-                    </button>
-                    <a href="#" class="btn btn-primary-outline">
-                        <i class="fa-solid fa-headset"></i>
-                        Konsultatsiya Olish
-                    </a>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button id="prev-btn" class="btn btn-outline hidden" style="flex: 1;">Ortga</button>
+                    <button id="next-btn" class="btn btn-primary" style="flex: 1;">Keyingisi <i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
+    <!-- RESULTS SCREEN: DASHBOARD STYLE (The request focus) -->
+    <section id="results-screen" class="screen">
+        <div class="container">
+
+            <!-- Dashboard Header -->
+            <div class="dashboard-header">
+                <div class="brand-logo">
+                    <span style="color: #2563eb;"><i class="fa-solid fa-chart-column"></i></span>
+                    Marketing & Byudjet audit
+                </div>
+                <button id="restart-btn" class="btn btn-outline" onclick="location.reload()">
+                    <i class="fa-solid fa-rotate-right"></i> Qayta Audit
+                </button>
+            </div>
+
+            <!-- 1. BIZNES HOLATI SECTON -->
+            <div class="section-title">
+                <i class="fa-solid fa-briefcase" style="color: #64748b;"></i> Biznes holati
+            </div>
+
+            <div class="status-grid-row">
+                <!-- Card 1: CRM -->
+                <div class="status-card">
+                    <div class="status-info">
+                        <h4>CRM</h4>
+                        <div class="status-badge success">
+                            <i class="fa-solid fa-circle-check"></i> Mavjud
+                        </div>
+                    </div>
+                    <div class="status-icon-circle">
+                        <i class="fa-solid fa-desktop"></i>
+                    </div>
+                </div>
+
+                <!-- Card 2: Sotuv Bo'limi -->
+                <div class="status-card">
+                    <div class="status-info">
+                        <h4>Sotuv bo'limi</h4>
+                        <div class="status-badge success">
+                            <i class="fa-solid fa-circle-check"></i> Mavjud
+                        </div>
+                    </div>
+                    <div class="status-icon-circle">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+                </div>
+
+                <!-- Card 3: Ijtimoiy Tarmoq -->
+                <div class="status-card">
+                    <div class="status-info">
+                        <h4>Ijtimoiy tarmoq</h4>
+                        <div class="status-badge warning">
+                            <i class="fa-solid fa-star"></i> Zo'r
+                        </div>
+                    </div>
+                    <div class="status-icon-circle">
+                        <i class="fa-brands fa-instagram"></i>
+                    </div>
+                </div>
+
+                <!-- Card 4: Xavf Darajasi (Dynamic) -->
+                <div class="status-card">
+                    <div class="status-info">
+                        <h4>Xavf darajasi</h4>
+                        <div class="status-badge" id="risk-badge">
+                            <i class="fa-solid fa-circle" id="risk-dot"></i> <span id="risk-level">Past</span>
+                        </div>
+                    </div>
+                    <div class="status-icon-circle" id="risk-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. MOLIYAVIY MAQSAD SECTION -->
+            <div class="section-title">
+                <i class="fa-solid fa-bullseye" style="color: #ef4444;"></i> Moliyaviy maqsad
+            </div>
+
+            <div class="financial-grid-row">
+                <!-- Card 1: Oylik Daromad -->
+                <div class="financial-card">
+                    <div class="financial-symbol">$</div>
+                    <div class="financial-value" id="goal-amount">$200,000</div>
+                    <div class="financial-label">Oylik daromad</div>
+                </div>
+
+                <!-- Card 2: O'rtacha Chek (Highlighted) -->
+                <div class="financial-card highlight">
+                    <div class="financial-icon">
+                        <i class="fa-solid fa-play" style="font-size: 1.2rem; margin-left: 4px;"></i>
+                    </div>
+                    <div class="financial-value" id="opt-budget">$6,000</div>
+                    <div class="financial-label">O'rtacha chek</div>
+                </div>
+
+                <!-- Card 3: Kerakli Mijozlar -->
+                <div class="financial-card">
+                    <div class="financial-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="financial-value" id="needed-clients">34</div>
+                    <div class="financial-label">Kerakli mijozlar</div>
+                </div>
+            </div>
+
+            <!-- 3. FUNNEL HISOB-KITOBI SECTION -->
+            <div class="section-title">
+                <i class="fa-solid fa-chart-line" style="color: #ef4444;"></i> Funnel hisob-kitobi
+            </div>
+
+            <div class="funnel-container">
+                <!-- Group 1: Conversion -->
+                <div class="funnel-group">
+                    <h4>Sotuv konversiyasi</h4>
+                    <div class="funnel-value" id="conversion-display">30%</div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="funnel-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+                <!-- Group 2: Leads -->
+                <div class="funnel-group">
+                    <div class="funnel-icon">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <h4>Kerakli lidlar</h4>
+                    <div class="funnel-value" id="needed-leads">2</div>
+                </div>
+            </div>
+
+            <!-- 4. AI TAVSIYALAR SECTION -->
+            <div class="recommendations-section">
+                <div class="section-title">
+                    <i class="fa-solid fa-robot" style="color: #8b5cf6;"></i> AI Tavsiyalar
+                    <span style="font-size: 0.8rem; color: #64748b; font-weight: 400; margin-left: 0.5rem;">
+                        — Sizning biznesingiz uchun maxsus
+                    </span>
+                </div>
+
+                <div id="recommendations-list">
+                    <!-- JS injects AI recommendations here -->
+                </div>
+            </div>
+
+            <!-- Hidden elements required by script.js logic to avoid errors -->
+            <div id="penalties-box" style="display:none;"></div>
+            <div id="penalties-list" style="display:none;"></div>
+            <div id="min-budget" style="display:none;"></div>
+            <div id="revenue-goal" style="display:none;"></div>
+            <div id="save-btn" style="display:none;"></div>
+
+        </div>
+    </section>
+
+    <!-- Script Import -->
     <script src="/static/script.js"></script>
 </body>
 

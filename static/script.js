@@ -1,86 +1,106 @@
 // ============================================
-// MARKETING AUDIT APP - PRO VERSION
-// Modern UI with Particles, Confetti, Animations
+// MARKETING AUDIT APP - GROUPED QUESTIONS VERSION
+// Questions grouped: 1-3, 4-6, 7-9
 // ============================================
 
-const questions = [
-    // Step 1: Business Profile
+// Question Groups (3 questions per page)
+const questionGroups = [
+    // Group 1: Business Profile (Questions 1-3)
     {
-        id: 'owner_status',
-        title: "Siz biznes egasimisiz?",
-        type: 'select',
-        options: [
-            { value: 'yes', label: '✅ Ha, egasiman' },
-            { value: 'no', label: '👔 Yo\'q, menejerman' }
+        stepTitle: "Biznes profili",
+        stepNumber: 1,
+        questions: [
+            {
+                id: 'owner_status',
+                title: "Siz biznes egasimisiz?",
+                type: 'select',
+                options: [
+                    { value: 'yes', label: '<i class="fa-solid fa-crown"></i> Ha, egasiman' },
+                    { value: 'no', label: '<i class="fa-solid fa-user-tie"></i> Yo\'q, menejerman' }
+                ]
+            },
+            {
+                id: 'crm_status',
+                title: "Sizda CRM tizimi mavjudmi?",
+                type: 'select',
+                options: [
+                    { value: 'yes', label: '<i class="fa-solid fa-circle-check"></i> Ha, bor' },
+                    { value: 'no', label: '<i class="fa-solid fa-circle-xmark"></i> Yo\'q' }
+                ]
+            },
+            {
+                id: 'sales_dept',
+                title: "Alohida sotuv bo'limi bormi?",
+                type: 'select',
+                options: [
+                    { value: 'yes', label: '<i class="fa-solid fa-users"></i> Ha, bor' },
+                    { value: 'no', label: '<i class="fa-solid fa-user"></i> Yo\'q, o\'zim' }
+                ]
+            }
         ]
     },
+    // Group 2: Platform & Industry (Questions 4-6)
     {
-        id: 'crm_status',
-        title: "Sizda CRM tizimi mavjudmi?",
-        type: 'select',
-        options: [
-            { value: 'yes', label: '✅ Ha, bor' },
-            { value: 'no', label: '❌ Yo\'q' }
+        stepTitle: "Soha va platforma",
+        stepNumber: 2,
+        questions: [
+            {
+                id: 'social_status',
+                title: "Ijtimoiy tarmoqlaringiz holati?",
+                type: 'select',
+                options: [
+                    { value: 'good', label: '<i class="fa-solid fa-fire"></i> Zo\'r' },
+                    { value: 'average', label: '<i class="fa-solid fa-thumbs-up"></i> O\'rtacha' },
+                    { value: 'bad', label: '<i class="fa-solid fa-thumbs-down"></i> Yomon' }
+                ]
+            },
+            {
+                id: 'industry',
+                title: "Biznesingiz qaysi sohada?",
+                type: 'text',
+                placeholder: "Masalan: O'quv markazi, Kiyim do'koni..."
+            },
+            {
+                id: 'platform',
+                title: "Asosiy reklama platformangiz?",
+                type: 'select',
+                options: [
+                    { value: 'instagram', label: '<i class="fa-brands fa-instagram"></i> Instagram' },
+                    { value: 'telegram', label: '<i class="fa-brands fa-telegram"></i> Telegram' },
+                    { value: 'facebook', label: '<i class="fa-brands fa-facebook"></i> Facebook' },
+                    { value: 'other', label: '<i class="fa-solid fa-globe"></i> Boshqa' }
+                ]
+            }
         ]
     },
+    // Group 3: Financials (Questions 7-9)
     {
-        id: 'sales_dept',
-        title: "Alohida sotuv bo'limi bormi?",
-        type: 'select',
-        options: [
-            { value: 'yes', label: '👥 Ha, bor' },
-            { value: 'no', label: '🙋 Yo\'q, o\'zim' }
+        stepTitle: "Moliyaviy maqsadlar",
+        stepNumber: 3,
+        questions: [
+            {
+                id: 'income_goal',
+                title: "Oylik daromad maqsadingiz?",
+                type: 'number',
+                placeholder: "$ da kiriting, masalan: 10000"
+            },
+            {
+                id: 'avg_check',
+                title: "O'rtacha chek qancha?",
+                type: 'number',
+                placeholder: "$ da kiriting, masalan: 60"
+            },
+            {
+                id: 'conversion',
+                title: "Sotuv konversiyasi necha %?",
+                type: 'number',
+                placeholder: "Masalan: 30"
+            }
         ]
-    },
-    {
-        id: 'social_status',
-        title: "Ijtimoiy tarmoqlaringiz holati?",
-        type: 'select',
-        options: [
-            { value: 'good', label: '🔥 Zo\'r' },
-            { value: 'average', label: '👌 O\'rtacha' },
-            { value: 'bad', label: '😔 Yomon' }
-        ]
-    },
-    // Step 2: Financials
-    {
-        id: 'industry',
-        title: "Biznesingiz qaysi sohada?",
-        type: 'text',
-        placeholder: "Masalan: O'quv markazi, Kiyim do'koni..."
-    },
-    {
-        id: 'platform',
-        title: "Asosiy reklama platformangiz?",
-        type: 'select',
-        options: [
-            { value: 'instagram', label: '📸 Instagram' },
-            { value: 'telegram', label: '✈️ Telegram' },
-            { value: 'facebook', label: '📘 Facebook' },
-            { value: 'other', label: '🌐 Boshqa' }
-        ]
-    },
-    {
-        id: 'income_goal',
-        title: "Oylik daromad maqsadingiz?",
-        type: 'number',
-        placeholder: "$ da kiriting, masalan: 10000"
-    },
-    {
-        id: 'avg_check',
-        title: "O'rtacha chek qancha?",
-        type: 'number',
-        placeholder: "$ da kiriting, masalan: 60"
-    },
-    {
-        id: 'conversion',
-        title: "Sotuv konversiyasi necha %?",
-        type: 'number',
-        placeholder: "Masalan: 30"
     }
 ];
 
-let currentStep = 0;
+let currentGroupIndex = 0;
 let answers = {};
 const BENCHMARK_CPL_MIN = 0.8;
 const BENCHMARK_CPL_MAX = 1.5;
@@ -98,95 +118,6 @@ const startBtn = document.getElementById('start-btn');
 const restartBtn = document.getElementById('restart-btn');
 
 // ============================================
-// PARTICLES SYSTEM
-// ============================================
-function createParticles() {
-    const particlesContainer = document.createElement('div');
-    particlesContainer.className = 'particles';
-    document.body.appendChild(particlesContainer);
-
-    const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#a5b4fc'];
-
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.animationDelay = Math.random() * 15 + 's';
-        particle.style.animationDuration = (10 + Math.random() * 10) + 's';
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        particle.style.width = (2 + Math.random() * 4) + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.boxShadow = `0 0 ${10 + Math.random() * 10}px currentColor`;
-        particlesContainer.appendChild(particle);
-    }
-}
-
-// ============================================
-// CONFETTI SYSTEM
-// ============================================
-function createConfetti() {
-    const colors = ['#6366f1', '#8b5cf6', '#06b6d4', '#10b981', '#f59e0b', '#ef4444', '#ec4899'];
-    const shapes = ['square', 'circle'];
-
-    for (let i = 0; i < 100; i++) {
-        setTimeout(() => {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.width = (5 + Math.random() * 10) + 'px';
-            confetti.style.height = confetti.style.width;
-            confetti.style.borderRadius = shapes[Math.floor(Math.random() * shapes.length)] === 'circle' ? '50%' : '2px';
-            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-
-            document.body.appendChild(confetti);
-
-            // Animate
-            const animation = confetti.animate([
-                {
-                    top: '-10px',
-                    opacity: 1,
-                    transform: `translateX(0) rotate(0deg)`
-                },
-                {
-                    top: '100vh',
-                    opacity: 0,
-                    transform: `translateX(${(Math.random() - 0.5) * 200}px) rotate(${Math.random() * 720}deg)`
-                }
-            ], {
-                duration: 2000 + Math.random() * 2000,
-                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
-            });
-
-            animation.onfinish = () => confetti.remove();
-        }, i * 30);
-    }
-}
-
-// ============================================
-// TYPING EFFECT
-// ============================================
-function typeText(element, text, speed = 30) {
-    return new Promise((resolve) => {
-        element.innerHTML = '';
-        element.classList.add('typing-text');
-        let i = 0;
-
-        const type = () => {
-            if (i < text.length) {
-                element.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            } else {
-                element.classList.remove('typing-text');
-                resolve();
-            }
-        };
-        type();
-    });
-}
-
-// ============================================
 // NAVIGATION
 // ============================================
 function navigateScreen(from, to) {
@@ -195,10 +126,7 @@ function navigateScreen(from, to) {
     setTimeout(() => {
         from.style.display = 'none';
         to.style.display = 'block';
-
-        // Force reflow
         void to.offsetWidth;
-
         setTimeout(() => {
             to.classList.add('active');
         }, 50);
@@ -206,104 +134,137 @@ function navigateScreen(from, to) {
 }
 
 // ============================================
-// RENDER QUESTION
+// RENDER GROUPED QUESTIONS
 // ============================================
-function renderQuestion() {
-    const q = questions[currentStep];
-    questionTitle.innerText = `Savol ${currentStep + 1}/${questions.length}`;
+function renderQuestionGroup() {
+    const group = questionGroups[currentGroupIndex];
 
-    // Update progress bar with smooth animation
-    const progress = ((currentStep + 1) / questions.length) * 100;
+    // Update title
+    questionTitle.innerHTML = `<span style="color: hsl(var(--primary));">Qadam ${group.stepNumber}/3</span> — ${group.stepTitle}`;
+
+    // Update progress bar
+    const progress = ((currentGroupIndex + 1) / questionGroups.length) * 100;
     progressBar.style.width = `${progress}%`;
 
-    // Render Input
-    let html = '';
-    if (q.type === 'select') {
-        html = `<h3 class="question-text" id="q-text"></h3>`;
-        html += `<div class="options-grid">`;
-        q.options.forEach(opt => {
-            const isSelected = answers[q.id] === opt.value ? 'selected' : '';
-            html += `
-                <div class="option-card ${isSelected}" onclick="selectOption('${q.id}', '${opt.value}')">
-                    ${opt.label}
-                </div>
-            `;
-        });
-        html += `</div>`;
-    } else {
-        const val = answers[q.id] || '';
-        html = `
-            <div class="input-group">
-                <label id="q-text"></label>
-                <input type="${q.type}" id="input-${q.id}" value="${val}" placeholder="${q.placeholder}" oninput="saveInput('${q.id}', this.value)">
-            </div>
-        `;
-    }
+    // Build HTML for all 3 questions in this group
+    let html = '<div class="questions-group">';
 
+    group.questions.forEach((q, idx) => {
+        html += `<div class="question-block" style="animation-delay: ${idx * 0.1}s;">`;
+        html += `<label class="question-label">${q.title}</label>`;
+
+        if (q.type === 'select') {
+            html += `<div class="options-row">`;
+            q.options.forEach(opt => {
+                const isSelected = answers[q.id] === opt.value ? 'selected' : '';
+                html += `
+                    <div class="option-card ${isSelected}" onclick="selectOption('${q.id}', '${opt.value}', this)">
+                        ${opt.label}
+                    </div>
+                `;
+            });
+            html += `</div>`;
+        } else {
+            const val = answers[q.id] || '';
+            html += `
+                <input 
+                    type="${q.type}" 
+                    class="input-field"
+                    id="input-${q.id}" 
+                    value="${val}" 
+                    placeholder="${q.placeholder}" 
+                    oninput="saveInput('${q.id}', this.value)"
+                >
+            `;
+        }
+
+        html += `</div>`;
+    });
+
+    html += '</div>';
     questionContainer.innerHTML = html;
 
-    // Apply typing effect
-    const textElement = document.getElementById('q-text');
-    if (textElement) {
-        typeText(textElement, q.title, 25);
-    }
-
     // Button states
-    prevBtn.classList.toggle('hidden', currentStep === 0);
+    prevBtn.classList.toggle('hidden', currentGroupIndex === 0);
 
-    if (currentStep === questions.length - 1) {
+    if (currentGroupIndex === questionGroups.length - 1) {
         nextBtn.innerHTML = '🎯 Hisoblash';
     } else {
         nextBtn.innerHTML = 'Keyingisi <i class="fa-solid fa-arrow-right"></i>';
     }
 }
 
-// Global functions for inline onclick handlers
-window.selectOption = function (id, value) {
+// Global functions
+window.selectOption = function (id, value, element) {
     answers[id] = value;
 
-    // Add selection animation
-    document.querySelectorAll('.option-card').forEach(card => {
+    // Remove selection from siblings only
+    const parent = element.parentElement;
+    parent.querySelectorAll('.option-card').forEach(card => {
         card.classList.remove('selected');
     });
-    event.currentTarget.classList.add('selected');
-
-    // Auto-advance after short delay
-    setTimeout(() => {
-        if (currentStep < questions.length - 1) {
-            handleNext();
-        }
-    }, 400);
+    element.classList.add('selected');
 }
 
 window.saveInput = function (id, value) {
     answers[id] = value;
 }
 
-function handleNext() {
-    const q = questions[currentStep];
+function validateCurrentGroup() {
+    const group = questionGroups[currentGroupIndex];
+    let isValid = true;
+    let firstEmpty = null;
 
-    // Validation
-    if (!answers[q.id]) {
-        // Shake animation
-        const container = document.querySelector('.glass-card');
-        container.style.animation = 'shake 0.5s';
-        setTimeout(() => container.style.animation = '', 500);
+    group.questions.forEach(q => {
+        if (!answers[q.id] || answers[q.id].toString().trim() === '') {
+            isValid = false;
+            if (!firstEmpty) {
+                firstEmpty = q.id;
+            }
+        }
+    });
+
+    if (!isValid && firstEmpty) {
+        // Highlight empty field
+        const input = document.getElementById(`input-${firstEmpty}`);
+        if (input) {
+            input.style.borderColor = 'hsl(0 84% 60%)';
+            input.focus();
+            setTimeout(() => {
+                input.style.borderColor = '';
+            }, 2000);
+        }
+
+        // Shake the card
+        const card = document.querySelector('.wizard-card');
+        if (card) {
+            card.style.animation = 'shake 0.5s';
+            setTimeout(() => card.style.animation = '', 500);
+        }
+    }
+
+    return isValid;
+}
+
+function handleNext() {
+    if (!validateCurrentGroup()) {
         return;
     }
 
-    if (currentStep < questions.length - 1) {
-        currentStep++;
-        renderQuestion();
+    if (currentGroupIndex < questionGroups.length - 1) {
+        currentGroupIndex++;
+        renderQuestionGroup();
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
         calculateAndShowResults();
     }
 }
 
 function handlePrev() {
-    if (currentStep > 0) {
-        currentStep--;
-        renderQuestion();
+    if (currentGroupIndex > 0) {
+        currentGroupIndex--;
+        renderQuestionGroup();
     }
 }
 
@@ -311,7 +272,6 @@ function handlePrev() {
 // CALCULATE RESULTS
 // ============================================
 function calculateAndShowResults() {
-    // 1. Core Financials
     const goal = parseFloat(answers.income_goal);
     const check = parseFloat(answers.avg_check);
     const conv = parseFloat(answers.conversion) / 100;
@@ -319,7 +279,6 @@ function calculateAndShowResults() {
     const neededClients = Math.ceil(goal / check);
     const neededLeads = Math.ceil(neededClients / conv);
 
-    // 2. Penalties
     let penaltyMultiplier = 1.0;
     const penalties = [];
 
@@ -332,44 +291,73 @@ function calculateAndShowResults() {
         penalties.push("Sotuv bo'limi yo'q (+20% xarajat)");
     }
 
-    // 3. Budgets
     const baseMinBudget = neededLeads * BENCHMARK_CPL_MIN;
     const baseOptBudget = neededLeads * BENCHMARK_CPL_MAX;
 
     const finalMinBudget = baseMinBudget * penaltyMultiplier;
     const finalOptBudget = baseOptBudget * penaltyMultiplier;
 
-    // 4. Update UI with animations
-    const riskLevel = penalties.length >= 2 ? "🔴 Yuqori" : (penalties.length === 1 ? "🟡 O'rtacha" : "🟢 Past");
+    // Determine risk level text with color coding
+    let riskText = "Past";
+    let riskClass = "risk-low";
+    let badgeClass = "success";
+    let iconClass = "risk-low-icon";
 
-    document.getElementById('risk-level').innerText = riskLevel;
-    document.getElementById('goal-amount').innerText = `$${goal.toLocaleString()}`;
-
-    // Animate numbers
-    animateNumber('needed-clients', neededClients);
-    animateNumber('needed-leads', neededLeads);
-    document.getElementById('revenue-goal').innerText = `$${goal.toLocaleString()}`;
-
-    document.getElementById('min-budget').innerText = `$${Math.round(finalMinBudget).toLocaleString()}`;
-    document.getElementById('opt-budget').innerText = `$${Math.round(finalOptBudget).toLocaleString()}`;
-
-    // Render Penalties
-    const penaltyList = document.getElementById('penalties-list');
-    penaltyList.innerHTML = '';
-    if (penalties.length > 0) {
-        penalties.forEach(p => {
-            const li = document.createElement('li');
-            li.innerText = p;
-            penaltyList.appendChild(li);
-        });
-        document.getElementById('penalties-box').style.display = 'block';
-    } else {
-        document.getElementById('penalties-box').style.display = 'none';
+    if (penalties.length >= 2) {
+        riskText = "Yuqori";
+        riskClass = "risk-high";
+        badgeClass = "danger";
+        iconClass = "risk-high-icon";
+    } else if (penalties.length === 1) {
+        riskText = "O'rtacha";
+        riskClass = "risk-medium";
+        badgeClass = "warning";
+        iconClass = "risk-medium-icon";
     }
 
-    // ============================================
-    // GENERATE SMART RECOMMENDATIONS
-    // ============================================
+    // Update risk level elements
+    const riskElement = document.getElementById('risk-level');
+    const riskBadge = document.getElementById('risk-badge');
+    const riskDot = document.getElementById('risk-dot');
+    const riskIcon = document.getElementById('risk-icon');
+
+    riskElement.innerText = riskText;
+    riskElement.className = riskClass;
+
+    if (riskBadge) riskBadge.className = `status-badge ${badgeClass}`;
+    if (riskDot) riskDot.className = `fa-solid fa-circle ${riskClass}`;
+    if (riskIcon) riskIcon.className = `status-icon-circle ${iconClass}`;
+    document.getElementById('goal-amount').innerText = `$${goal.toLocaleString()}`;
+
+    animateNumber('needed-clients', neededClients);
+    animateNumber('needed-leads', neededLeads);
+
+    const revenueGoal = document.getElementById('revenue-goal');
+    if (revenueGoal) revenueGoal.innerText = `$${goal.toLocaleString()}`;
+
+    const minBudget = document.getElementById('min-budget');
+    if (minBudget) minBudget.innerText = `$${Math.round(finalMinBudget).toLocaleString()}`;
+
+    document.getElementById('opt-budget').innerText = `$${Math.round(finalOptBudget).toLocaleString()}`;
+
+    // Penalties
+    const penaltyList = document.getElementById('penalties-list');
+    const penaltyBox = document.getElementById('penalties-box');
+    if (penaltyList && penaltyBox) {
+        penaltyList.innerHTML = '';
+        if (penalties.length > 0) {
+            penalties.forEach(p => {
+                const li = document.createElement('li');
+                li.innerText = p;
+                penaltyList.appendChild(li);
+            });
+            penaltyBox.style.display = 'block';
+        } else {
+            penaltyBox.style.display = 'none';
+        }
+    }
+
+    // Recommendations
     generateRecommendations({
         crm: answers.crm_status,
         salesDept: answers.sales_dept,
@@ -383,9 +371,6 @@ function calculateAndShowResults() {
     });
 
     navigateScreen(wizardScreen, resultsScreen);
-
-    // Trigger confetti!
-    setTimeout(() => createConfetti(), 500);
 }
 
 // ============================================
@@ -393,6 +378,8 @@ function calculateAndShowResults() {
 // ============================================
 function animateNumber(elementId, target) {
     const element = document.getElementById(elementId);
+    if (!element) return;
+
     const duration = 1500;
     const start = 0;
     const startTime = performance.now();
@@ -400,8 +387,6 @@ function animateNumber(elementId, target) {
     function update(currentTime) {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-
-        // Easing
         const easeOut = 1 - Math.pow(1 - progress, 3);
         const current = Math.round(start + (target - start) * easeOut);
 
@@ -416,75 +401,185 @@ function animateNumber(elementId, target) {
 }
 
 // ============================================
-// GENERATE RECOMMENDATIONS
+// AI-POWERED SMART RECOMMENDATIONS
 // ============================================
 function generateRecommendations(data) {
     const recommendations = [];
+    const industry = answers.industry?.toLowerCase() || '';
 
-    // 1. CRM Recommendation
+    // =========================================
+    // 1. MUAMMOLARNI ANIQLASH VA HAL QILISH
+    // =========================================
+
+    // CRM yo'q - zamonaviy yechimlar
     if (data.crm === 'no') {
         recommendations.push({
             priority: 'high',
-            icon: 'fa-database',
+            icon: 'fa-robot',
             iconClass: 'danger',
-            title: 'CRM Tizimini O\'rnating',
-            description: 'CRM tizimi (AmoCRM, Bitrix24, yoki boshqa) mijozlar bazasini boshqarish, sotuvlarni kuzatish va takroriy sotuvlarni oshirishda muhim rol o\'ynaydi. CRM yo\'qligi sababli siz mijozlarning 30-40% ini yo\'qotishingiz mumkin.',
-            benefit: 'Byudjetni 20% tejash'
+            title: '🤖 AI-Powered CRM O\'rnating',
+            description: `Zamonaviy CRM tizimlari sun'iy intellekt bilan ishlaydi. <strong>HubSpot</strong> (bepul), <strong>Bitrix24</strong> yoki <strong>AmoCRM</strong> - bular mijozlarni avtomatik segmentlaydi, follow-up eslatmalar yuboradi va sotuvlarni prognoz qiladi.`,
+            benefit: 'Sotuvlar +40%, vaqt tejash 5 soat/hafta',
+            tools: ['HubSpot CRM', 'Notion', 'Bitrix24']
         });
     }
 
-    // 2. Sales Team Recommendation
+    // Sotuv bo'limi yo'q - AI chatbot yechimi
     if (data.salesDept === 'no') {
         recommendations.push({
             priority: 'high',
-            icon: 'fa-user-tie',
+            icon: 'fa-comments',
             iconClass: 'danger',
-            title: 'Sotuv Menejerini Yollang',
-            description: `Oyiga ${data.neededLeads} ta lidni o'zingiz qayta ishlashingiz qiyin. Professional sotuv menejeri konversiyani 30-50% ga oshirishi va sizning vaqtingizni tejashi mumkin.`,
-            benefit: 'Konversiya +30%'
+            title: '💬 AI Chatbot Sotuv Assistenti',
+            description: `Sotuv bo'limi yo'qmi? <strong>AI Chatbot</strong> 24/7 ishlaydi! <strong>ManyChat</strong>, <strong>Tidio</strong> yoki <strong>ChatGPT API</strong> orqali mijozlar savollariga javob beradi, lid yig'adi va hatto sotuvni yopadi.`,
+            benefit: 'Lidlarni 70% avtomatik qayta ishlash',
+            tools: ['ManyChat', 'Tidio', 'Intercom']
         });
     }
 
-    // 3. Social Media Recommendation
+    // Ijtimoiy tarmoq yomon
     if (data.socialStatus === 'bad') {
         recommendations.push({
             priority: 'high',
-            icon: 'fa-palette',
+            icon: 'fa-wand-magic-sparkles',
             iconClass: 'warning',
-            title: 'Ijtimoiy Tarmoqlarni Yaxshilang',
-            description: 'Yomon upakovka bilan reklama samaradorligi 50% ga tushadi. Professional kontent, highlights, va bio optimizatsiyasi qiling. Brend kitobchasi yarating.',
-            benefit: 'CTR +40%'
+            title: '✨ AI Kontent Generator',
+            description: `Kontent yaratish qiyin? <strong>Canva AI</strong>, <strong>ChatGPT</strong> va <strong>Midjourney</strong> sizga professional darajadagi postlar, reels va stories yaratishda yordam beradi. Haftada 1 soatda 30+ kontent!`,
+            benefit: 'Engagement +200%, vaqt tejash 80%',
+            tools: ['Canva Pro', 'ChatGPT', 'CapCut']
         });
     } else if (data.socialStatus === 'average') {
         recommendations.push({
             priority: 'medium',
-            icon: 'fa-wand-magic-sparkles',
+            icon: 'fa-calendar-check',
             iconClass: 'warning',
-            title: 'Kontentni Kuchaytiring',
-            description: 'Reels, Stories va interaktiv kontent qo\'shing. Haftalik kontent rejasini tuzing. UGC (mijozlar kontenti) ni ko\'proq ishlating.',
-            benefit: 'Engagement +25%'
+            title: '📅 Kontent Rejalashtirish',
+            description: `<strong>Later</strong>, <strong>Buffer</strong> yoki <strong>Meta Business Suite</strong> orqali postlarni oldindan rejalashtiring. AI analytics bilan eng yaxshi vaqtni aniqlang.`,
+            benefit: 'Posting izchilligi +100%',
+            tools: ['Later', 'Buffer', 'Hootsuite']
         });
     }
 
-    // 4. Platform-specific advice
+    // =========================================
+    // 2. SOHA BO'YICHA MAXSUS YECHIMLAR
+    // =========================================
+
+    const industryKeywords = {
+        education: ['o\'quv', 'kurs', 'ta\'lim', 'markaz', 'akademiya', 'maktab', 'universitet', 'coaching'],
+        ecommerce: ['do\'kon', 'shop', 'savdo', 'magazin', 'online', 'sotish'],
+        restaurant: ['restoran', 'kafe', 'oshxona', 'food', 'ovqat', 'yemak'],
+        beauty: ['salon', 'go\'zallik', 'sartaroshxona', 'spa', 'kosmetika', 'beauty'],
+        medical: ['klinika', 'shifokor', 'tibbiyot', 'stomatolog', 'doctor', 'med'],
+        realestate: ['ko\'chmas', 'kvartira', 'uy', 'arenda', 'ijara', 'mulk'],
+        fitness: ['sport', 'gym', 'fitness', 'yoga', 'trener'],
+        it: ['it', 'dastur', 'texnolog', 'kompyuter', 'web', 'mobil', 'sayt']
+    };
+
+    let detectedIndustry = null;
+    for (const [ind, keywords] of Object.entries(industryKeywords)) {
+        if (keywords.some(kw => industry.includes(kw))) {
+            detectedIndustry = ind;
+            break;
+        }
+    }
+
+    const industryRecommendations = {
+        education: {
+            icon: 'fa-graduation-cap',
+            title: '🎓 Ta\'lim Sohasi uchun AI Yechimlar',
+            description: `<strong>Teachable</strong> yoki <strong>Thinkific</strong> da online kurs yarating. <strong>Zoom AI</strong> bilan darslarni avtomatik yozib oling. <strong>Notion AI</strong> da o'quv materiallarini yarating. Telegram bot orqali avtomatik ro'yxatga olish.`,
+            benefit: 'Passive income +300%',
+            tools: ['Teachable', 'Notion AI', 'Zoom']
+        },
+        ecommerce: {
+            icon: 'fa-cart-shopping',
+            title: '🛒 E-Commerce AI Avtomatizatsiya',
+            description: `<strong>Shopify</strong> + AI inventory management. <strong>Klaviyo</strong> bilan email marketing avtomatlashtiruvi. <strong>ChatGPT</strong> orqali mahsulot tavsiflarini yozing. <strong>Dynamic pricing</strong> AI bilan narxlarni optimallashtiring.`,
+            benefit: 'AOV +25%, Conversion +35%',
+            tools: ['Shopify', 'Klaviyo', 'Oberlo']
+        },
+        restaurant: {
+            icon: 'fa-utensils',
+            title: '🍽️ Restoran AI Yechimlari',
+            description: `<strong>Poster POS</strong> yoki <strong>iiko</strong> bilan buyurtmalarni boshqaring. <strong>UberEats/Yandex</strong> integratsiyasi. <strong>AI Chatbot</strong> orqali buyurtma qabul qilish. Google Business profil optimizatsiyasi.`,
+            benefit: 'Buyurtmalar +40%',
+            tools: ['Poster', 'Yandex Eda', 'Google Business']
+        },
+        beauty: {
+            icon: 'fa-spa',
+            title: '💅 Beauty Salon AI Strategiyasi',
+            description: `<strong>YCLIENTS</strong> yoki <strong>Booksy</strong> bilan online band qilish. Instagram Reels + TikTok da transformatsiya videolar. <strong>WhatsApp Business</strong> avtomatik eslatmalar. Referral dasturi yarating.`,
+            benefit: 'Qayta tashriflar +50%',
+            tools: ['YCLIENTS', 'Booksy', 'WhatsApp Business']
+        },
+        medical: {
+            icon: 'fa-stethoscope',
+            title: '🏥 Tibbiyot uchun Digital Marketing',
+            description: `<strong>DocDoc</strong> yoki <strong>ProDoctorov</strong> da profil yarating. Google My Business reviews yig'ish. <strong>Telegram bot</strong> qabul qilish. Video konsultatsiya platformasi (<strong>Zoom Healthcare</strong>).`,
+            benefit: 'Yangi bemorlar +60%',
+            tools: ['Google Business', 'Telegram Bot', 'Zoom']
+        },
+        realestate: {
+            icon: 'fa-building',
+            title: '🏠 Ko\'chmas Mulk AI Marketing',
+            description: `<strong>3D virtual tourlar</strong> yarating (<strong>Matterport</strong>). AI bilan potentsial mijozlarni aniqlang. <strong>Facebook Lead Ads</strong> + CRM integratsiya. <strong>WhatsApp automation</strong> orqali follow-up.`,
+            benefit: 'Lead quality +45%',
+            tools: ['Matterport', 'Facebook Ads', 'WhatsApp']
+        },
+        fitness: {
+            icon: 'fa-dumbbell',
+            title: '💪 Fitness AI Marketing',
+            description: `<strong>Trainerize</strong> yoki <strong>TrueCoach</strong> da online mashg'ulotlar. Instagram Reels transformatsiyalar. <strong>Telegram subscription bot</strong>. <strong>Stripe</strong> bilan avtomatik to'lov.`,
+            benefit: 'Online daromad +200%',
+            tools: ['Trainerize', 'Stripe', 'Telegram']
+        },
+        it: {
+            icon: 'fa-code',
+            title: '💻 IT/Tech Marketing AI',
+            description: `<strong>LinkedIn Ads</strong> B2B uchun. <strong>GitHub</strong> portfolio. <strong>Clutch/Upwork</strong> profil optimizatsiyasi. <strong>AI code review</strong> xizmatlarini taklif qiling. Content marketing blog.`,
+            benefit: 'B2B leads +80%',
+            tools: ['LinkedIn', 'Clutch', 'Upwork']
+        }
+    };
+
+    if (detectedIndustry && industryRecommendations[detectedIndustry]) {
+        const indRec = industryRecommendations[detectedIndustry];
+        recommendations.push({
+            priority: 'high',
+            icon: indRec.icon,
+            iconClass: 'success',
+            title: indRec.title,
+            description: indRec.description,
+            benefit: indRec.benefit,
+            tools: indRec.tools
+        });
+    }
+
+    // =========================================
+    // 3. PLATFORMA BO'YICHA ZAMONAVIY STRATEGIYALAR
+    // =========================================
+
     const platformAdvice = {
         instagram: {
             icon: 'fa-instagram',
-            title: 'Instagram Strategiyasi',
-            description: 'Reels reklama eng arzon lidlarni beradi ($0.3-0.8). Carousel postlar engagement ni 3x oshiradi. Stories\'da poll va quiz ishlating.',
-            benefit: 'CPL -40%'
+            title: '📸 Instagram 2024 Strategiyasi',
+            description: `<strong>Reels</strong> - eng yuqori reach. <strong>AI Caption Generator</strong> (ChatGPT) ishlating. <strong>Hashtag strategiyasi</strong>: 5 katta + 10 niche + 5 branded. <strong>Carousel posts</strong> save rate ni 3x oshiradi. <strong>Collab posts</strong> bilan auditoriya almashing.`,
+            benefit: 'Reach +300%, CPL -50%',
+            tools: ['Later', 'Canva', 'ChatGPT']
         },
         telegram: {
             icon: 'fa-telegram',
-            title: 'Telegram Strategiyasi',
-            description: 'Kanal + Bot kombinatsiyasi eng yaxshi natija beradi. Mini-App yarating. Avtomatik funnel (bot orqali) o\'rnating.',
-            benefit: 'Avtomatizatsiya +50%'
+            title: '✈️ Telegram Marketing Pro',
+            description: `<strong>Kanal + Guruh + Bot</strong> uchligini yarating. <strong>Mini App</strong> bilan buyurtma qabul qiling. <strong>Invite link tracking</strong> qayerdan kelayotganini aniqlaydi. <strong>Premium emoji</strong> va <strong>reactions</strong> engagement oshiradi.`,
+            benefit: 'Konversiya +60%',
+            tools: ['BotFather', 'Teletype', 'TGStat']
         },
         facebook: {
             icon: 'fa-facebook',
-            title: 'Facebook Strategiyasi',
-            description: 'Lookalike audience ishlating. Retargeting pikselini o\'rnating. Video reklamalar 2x samarali.',
-            benefit: 'ROAS +35%'
+            title: '📘 Facebook Ads Advanced',
+            description: `<strong>Advantage+ Shopping</strong> AI kampaniyalar. <strong>Lookalike 1%</strong> audience eng sifatli. <strong>CAPI (Conversions API)</strong> o'rnating iOS tracking uchun. <strong>Dynamic Creative Testing</strong> avtomatik A/B test.`,
+            benefit: 'ROAS +45%',
+            tools: ['Meta Business Suite', 'Triple Whale']
         }
     };
 
@@ -493,65 +588,64 @@ function generateRecommendations(data) {
         recommendations.push({
             priority: 'medium',
             icon: advice.icon,
-            iconClass: 'success',
+            iconClass: 'primary',
             title: advice.title,
             description: advice.description,
-            benefit: advice.benefit
+            benefit: advice.benefit,
+            tools: advice.tools
         });
     }
 
-    // 5. Conversion Rate Advice
+    // =========================================
+    // 4. UMUMIY AI YECHIMLAR (Hamma uchun foydali)
+    // =========================================
+
+    // Konversiya past bo'lsa
     if (data.conversion < 20) {
         recommendations.push({
             priority: 'high',
-            icon: 'fa-funnel-dollar',
+            icon: 'fa-bullseye',
             iconClass: 'danger',
-            title: 'Konversiyani Oshiring',
-            description: `${data.conversion}% konversiya past. Skript yozing, taklifni kuchaytiring, va lead magnet (bepul bonus) qo\'shing. Tezkor javob berish (5 daqiqa ichida) konversiyani 2x oshiradi.`,
-            benefit: 'Konversiya x2'
-        });
-    } else if (data.conversion >= 20 && data.conversion < 40) {
-        recommendations.push({
-            priority: 'low',
-            icon: 'fa-chart-line',
-            iconClass: 'success',
-            title: 'Konversiyani Optimallashtiring',
-            description: 'Yaxshi konversiya! Endi upsell va cross-sell strategiyalarini qo\'shing. O\'rtacha chekni oshirish uchun premium paketlar yarating.',
-            benefit: 'AOV +20%'
+            title: '🎯 Konversiya Oshirish AI',
+            description: `<strong>Hotjar</strong> bilan foydalanuvchi xatti-harakatlarini kuzating. <strong>A/B testing</strong> (Google Optimize). <strong>AI chatbot</strong> tez javob beradi (5 daqiqa ichida konversiya 21x yuqori!). <strong>Exit-intent popup</strong> qo'shing.`,
+            benefit: 'Konversiya x2-3',
+            tools: ['Hotjar', 'Optimizely', 'Tidio']
         });
     }
 
-    // 6. Budget Advice
-    if (data.minBudget > 1000) {
+    // Byudjet katta bo'lsa
+    if (data.minBudget > 500) {
         recommendations.push({
             priority: 'medium',
-            icon: 'fa-piggy-bank',
+            icon: 'fa-chart-pie',
             iconClass: 'warning',
-            title: 'Test Byudjet Bilan Boshlang',
-            description: `$${Math.round(data.minBudget)} katta summa. Avval $100-200 bilan 3-5 kun test qiling. CPL ni aniqlang, keyin scale qiling. A/B test o'tkazing.`,
-            benefit: 'Xavfni kamaytirish'
+            title: '📊 Smart Budget Allocation',
+            description: `70-20-10 qoidasi: <strong>70%</strong> ishlayotgan kanallarga, <strong>20%</strong> yangi test kanallarga, <strong>10%</strong> eksperimental. <strong>Triple Whale</strong> yoki <strong>Hyros</strong> bilan ROASni real-time kuzating.`,
+            benefit: 'Byudjet samaradorligi +30%',
+            tools: ['Triple Whale', 'Google Analytics 4']
         });
     }
 
-    // 7. General Best Practice
+    // Hamma uchun foydali
     recommendations.push({
         priority: 'low',
-        icon: 'fa-lightbulb',
+        icon: 'fa-brain',
         iconClass: 'success',
-        title: 'Tracking va Analytics',
-        description: 'UTM teglarini ishlating. Google Analytics va Facebook Pixel o\'rnating. Haftalik hisobot yuritish orasidagi eng yaxshi kreativlarni aniqlaydi.',
-        benefit: 'ROI +15%'
+        title: '🧠 AI Marketing Stack 2024',
+        description: `Zamonaviy marketingning asosiy vositalari: <strong>ChatGPT</strong> (kontent), <strong>Canva AI</strong> (dizayn), <strong>Zapier</strong> (avtomatizatsiya), <strong>Notion AI</strong> (rejalashtirish). Bu to'rtlik sizning virtual marketing jamoangiz!`,
+        benefit: 'Samaradorlik +500%',
+        tools: ['ChatGPT', 'Canva', 'Zapier', 'Notion']
     });
 
-    // Render recommendations
     renderRecommendations(recommendations);
 }
 
 function renderRecommendations(recommendations) {
     const container = document.getElementById('recommendations-list');
+    if (!container) return;
+
     container.innerHTML = '';
 
-    // Sort by priority
     const priorityOrder = { high: 1, medium: 2, low: 3 };
     recommendations.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
 
@@ -559,13 +653,15 @@ function renderRecommendations(recommendations) {
         const card = document.createElement('div');
         card.className = `recommendation-card priority-${rec.priority}`;
         card.style.opacity = '0';
-        card.style.transform = 'translateX(-20px)';
+        card.style.transform = 'translateY(10px)';
 
-        const priorityLabels = {
-            high: 'Muhim',
-            medium: 'Tavsiya',
-            low: 'Foydali'
-        };
+        const priorityLabels = { high: '🔴 Muhim', medium: '🟡 Tavsiya', low: '🟢 Foydali' };
+
+        // Tools badges
+        let toolsHtml = '';
+        if (rec.tools && rec.tools.length > 0) {
+            toolsHtml = `<div class="rec-tools">${rec.tools.map(t => `<span class="tool-badge">${t}</span>`).join('')}</div>`;
+        }
 
         card.innerHTML = `
             <div class="rec-icon ${rec.iconClass}">
@@ -577,8 +673,9 @@ function renderRecommendations(recommendations) {
                     <span class="priority-badge ${rec.priority}">${priorityLabels[rec.priority]}</span>
                 </div>
                 <p class="rec-description">${rec.description}</p>
+                ${toolsHtml}
                 <span class="rec-benefit">
-                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    <i class="fa-solid fa-rocket"></i>
                     ${rec.benefit}
                 </span>
             </div>
@@ -586,11 +683,10 @@ function renderRecommendations(recommendations) {
 
         container.appendChild(card);
 
-        // Animate in
         setTimeout(() => {
-            card.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            card.style.transition = 'all 0.4s ease';
             card.style.opacity = '1';
-            card.style.transform = 'translateX(0)';
+            card.style.transform = 'translateY(0)';
         }, 100 * (index + 1));
     });
 }
@@ -600,11 +696,11 @@ function renderRecommendations(recommendations) {
 // ============================================
 startBtn.addEventListener('click', () => {
     navigateScreen(welcomeScreen, wizardScreen);
-    setTimeout(() => renderQuestion(), 400);
+    setTimeout(() => renderQuestionGroup(), 400);
 });
 
 restartBtn.addEventListener('click', () => {
-    currentStep = 0;
+    currentGroupIndex = 0;
     answers = {};
     navigateScreen(resultsScreen, welcomeScreen);
 });
@@ -612,72 +708,16 @@ restartBtn.addEventListener('click', () => {
 nextBtn.addEventListener('click', handleNext);
 prevBtn.addEventListener('click', handlePrev);
 
-// ============================================
-// SAVE FUNCTIONALITY
-// ============================================
-const saveBtn = document.getElementById('save-btn');
-if (saveBtn) {
-    saveBtn.addEventListener('click', saveAudit);
-}
-
-function saveAudit() {
-    const data = {
-        answers: answers,
-        results: {
-            neededClients: document.getElementById('needed-clients').innerText,
-            neededLeads: document.getElementById('needed-leads').innerText,
-            minBudget: document.getElementById('min-budget').innerText,
-            optBudget: document.getElementById('opt-budget').innerText,
-            penalties: document.getElementById('penalties-list').innerText.split('\n')
-        }
-    };
-
-    // Show loading state
-    saveBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Saqlanmoqda...';
-    saveBtn.disabled = true;
-
-    fetch('/api/save-audit', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === 'success') {
-                saveBtn.innerHTML = '✅ Saqlandi!';
-                saveBtn.style.background = 'linear-gradient(135deg, #10b981, #06b6d4)';
-            } else {
-                throw new Error(data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            saveBtn.innerHTML = '❌ Xatolik';
-            saveBtn.disabled = false;
-            setTimeout(() => {
-                saveBtn.innerHTML = 'Auditni Saqlash <i class="fa-solid fa-save"></i>';
-            }, 2000);
-        });
-}
-
-// ============================================
-// KEYBOARD NAVIGATION
-// ============================================
+// Keyboard navigation
 document.addEventListener('keydown', (e) => {
     if (wizardScreen.classList.contains('active')) {
-        if (e.key === 'Enter') {
+        if (e.key === 'Enter' && document.activeElement.tagName !== 'INPUT') {
             handleNext();
-        } else if (e.key === 'Backspace' && document.activeElement.tagName !== 'INPUT') {
-            handlePrev();
         }
     }
 });
 
-// ============================================
-// SHAKE ANIMATION
-// ============================================
+// Shake animation
 const style = document.createElement('style');
 style.textContent = `
     @keyframes shake {
@@ -692,9 +732,6 @@ document.head.appendChild(style);
 // INITIALIZE
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-    createParticles();
-
-    // Set initial display states
     welcomeScreen.style.display = 'block';
     wizardScreen.style.display = 'none';
     resultsScreen.style.display = 'none';
