@@ -6,7 +6,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 # Ensure data directory exists
-DATA_DIR = 'data'
+DATA_DIR = '/tmp/data'
 if not os.path.exists(DATA_DIR):
     os.makedirs(DATA_DIR)
 
@@ -34,6 +34,9 @@ def save_audit():
         return jsonify({"status": "success", "message": "Audit saved successfully", "file": filename}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
+# For Vercel
+app = app
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
