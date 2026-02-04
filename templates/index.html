@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marketing & Budjet Auditi | Pro</title>
+    <meta name="description"
+        content="Biznesingizning marketing holatini tahlil qiling va optimal reklama byudjetini aniqlang">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="background-glow"></div>
+
+    <div class="container">
+        <!-- Welcome Screen -->
+        <section id="welcome-screen" class="screen active">
+            <div class="glass-card welcome-card">
+                <div class="logo-area">
+                    <i class="fa-solid fa-rocket logo-icon"></i>
+                    <h1>Marketing Audit</h1>
+                </div>
+                <p class="subtitle">Biznesingizning hozirgi holati va potensialini professional darajada tahlil qiling
+                </p>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-magnifying-glass-chart"></i>
+                        <span>Chuqur Tahlil</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-coins"></i>
+                        <span>Byudjet Hisobi</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-chart-pie"></i>
+                        <span>Pro Natijalar</span>
+                    </div>
+                </div>
+                <button id="start-btn" class="btn btn-primary pulse">
+                    <i class="fa-solid fa-play"></i>
+                    Bepul Auditni Boshlash
+                </button>
+            </div>
+        </section>
+
+        <!-- Wizard Screen -->
+        <section id="wizard-screen" class="screen">
+            <div class="glass-card wizard-card">
+                <div class="wizard-header">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+                    <h2 id="question-title">Savol 1/9</h2>
+                </div>
+
+                <div id="question-container" class="question-container">
+                    <!-- Questions will be injected here via JS -->
+                </div>
+
+                <div class="wizard-controls">
+                    <button id="prev-btn" class="btn btn-secondary hidden">
+                        <i class="fa-solid fa-arrow-left"></i> Ortga
+                    </button>
+                    <button id="next-btn" class="btn btn-primary">
+                        Keyingisi <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="results-screen" class="screen">
+            <div class="glass-card results-card">
+                <h2>🎉 Marketing Audit Natijalari</h2>
+
+                <div class="status-grid">
+                    <div class="status-item">
+                        <h3>Biznes Holati</h3>
+                        <div class="status-indicator">
+                            <span class="icon-box warning"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                            <div class="status-text">
+                                <span class="label">Xavf darajasi</span>
+                                <span class="value" id="risk-level">🔴 Yuqori</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-item">
+                        <h3>Moliyaviy Maqsad</h3>
+                        <div class="status-indicator">
+                            <span class="icon-box success"><i class="fa-solid fa-sack-dollar"></i></span>
+                            <div class="status-text">
+                                <span class="label">Oylik daromad</span>
+                                <span class="value" id="goal-amount">$10,000</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="funnel-breakdown">
+                    <h3>📊 Funnel Hisob-kitobi</h3>
+                    <div class="funnel-steps">
+                        <div class="funnel-step">
+                            <span class="step-count" id="needed-leads">0</span>
+                            <span class="step-label">Kerakli Lidlar</span>
+                        </div>
+                        <div class="funnel-connector">➜</div>
+                        <div class="funnel-step">
+                            <span class="step-count" id="needed-clients">0</span>
+                            <span class="step-label">Kerakli Mijozlar</span>
+                        </div>
+                        <div class="funnel-connector">➜</div>
+                        <div class="funnel-step">
+                            <span class="step-count highlight" id="revenue-goal">$0</span>
+                            <span class="step-label">Daromad</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="budget-recommendation">
+                    <h3>💰 Tavsiya Etilgan Byudjet</h3>
+                    <div class="budget-box">
+                        <div class="budget-row">
+                            <span>Minimal byudjet:</span>
+                            <span class="budget-value" id="min-budget">$0</span>
+                        </div>
+                        <div class="budget-row">
+                            <span>Optimal byudjet:</span>
+                            <span class="budget-value" id="opt-budget">$0</span>
+                        </div>
+                    </div>
+                    <div class="penalties-box" id="penalties-box" style="display: none;">
+                        <h4><i class="fa-solid fa-exclamation-circle"></i> Muhim Ogohlantirishlar</h4>
+                        <ul id="penalties-list"></ul>
+                    </div>
+                </div>
+
+                <!-- TAVSIYALAR BO'LIMI -->
+                <div class="recommendations-section">
+                    <h3>🎯 Shaxsiy Tavsiyalar</h3>
+                    <div id="recommendations-list" class="recommendations-list">
+                        <!-- Recommendations will be injected here -->
+                    </div>
+                </div>
+
+                <div class="action-area">
+                    <button id="save-btn" class="btn btn-primary">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        Auditni Saqlash
+                    </button>
+                    <button id="restart-btn" class="btn btn-secondary">
+                        <i class="fa-solid fa-rotate"></i>
+                        Qayta Hisoblash
+                    </button>
+                    <a href="#" class="btn btn-primary-outline">
+                        <i class="fa-solid fa-headset"></i>
+                        Konsultatsiya Olish
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
